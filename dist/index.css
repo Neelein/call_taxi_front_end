@@ -1,0 +1,138 @@
+/* 基本重置 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+/* 主容器：使用 Flexbox 讓內容橫向排列 */
+.conteinr {
+    display: flex;
+    height: 100vh; /* 撐滿整個視窗高度 */
+    width: 100%;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column; /* 讓內容由上往下排 */
+    gap: 15px;             /* 設定內容之間的間距為 15px */
+    padding: 10px 0;       /* 上下增加一點內距 */
+}
+
+/* 如果你的內容只是散落在 .input-group 裡 */
+.input-group {
+    width: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 這會讓裡面的所有子元素(input, button, p)都間隔 15px */
+}
+
+.info-item{
+    margin: 10px 0px;
+}
+
+/* 輸入框樣式優化 */
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.info-list{
+    display: block;
+}
+
+/* 按鈕樣式 */
+button {
+    padding: 10px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #357ae8;
+}
+
+/* 右側地圖區塊 */
+#map {
+    flex-grow: 1; /* 自動填滿剩餘所有空間 */
+    height: 100%;
+}
+
+/* 狀態顯示文字 */
+#status {
+    position: absolute;
+    bottom: 20px;
+    left: 320px; /* 避開左側欄位 */
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .conteinr {
+        flex-direction: column;
+    }
+
+    .input-group {
+        width: 100%;
+        height: auto; /* 讓內容自動撐開，不使用捲軸 */
+        padding: 15px;
+        gap: 10px; /* 縮小一點間距 */
+    }
+
+    /* 核心修改：讓訂單內容區塊變成 1 橫列 2 個項目 */
+    .order-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* 允許換行 */
+        gap: 5px;
+    }
+    .info-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; 
+        gap: 5px;
+        margin-top: 5px;
+    }
+    .info-tag{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; 
+        gap: 5px;
+        flex: 0 0 calc(50% - 5px); 
+        margin: 0; 
+        box-sizing: border-box;
+    }
+
+    .info-item {
+        /* (100% / 2) - (間隔的一半) */
+        flex: 0 0 calc(50% - 5px); 
+        margin: 0; 
+        box-sizing: border-box;
+    }
+
+    /* 讓 input 和 button 在手機版依然維持一行一個 */
+    input, button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 地圖固定佔據畫面 60% */
+    #map {
+        width: 100%;
+        height: 60vh;
+        min-height: 300px;
+    }
+}

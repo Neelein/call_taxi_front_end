@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps 路線顯示 (無交通資訊版)</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="conteinr">
+        <div class="input-group">
+            <input id="origin-input" type="text" placeholder="出発地">
+            <input id="destination-input" type="text" placeholder="目的地">
+            <button onclick="Order()" id ="order_button">タクシーを呼ぶ</button> 
+            <button onclick="CancelOrder()" id ="cancelOrder_button">取り消す</button>
+            <button onclick="UnfallowDriver()" id ="unfallow_driver">フォローを解除する</button> 
+            <div id="order-info" class="order-card">
+            <div class="card-header">
+                <h3>注文内容</h3>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="label"></span>
+                        <span id="order-id-tag"># --</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label"></span>
+                         <span id="driver-status" >--</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">注文状況</span>
+                        <span id="order-status" class="value status-waiting"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">価格</span>
+                        <span id="order-price" class="value">¥</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">残りの距離</span>
+                        <span id="order-distance" class="value">0.0 km</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">残りの距離</span>
+                        <span id="order-time" class="value">0分</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="status"></div>
+    <div id="map"></div>
+
+    <script src="index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmH3g6fLuJMKMHKjpZjkEuSzBySqyDCk&libraries=places,geometry&callback=initMap&language=zh-TW"></script>
+</body>
+</html>
